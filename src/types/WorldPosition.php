@@ -12,35 +12,32 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\network\mcpe\protocol\types\camera;
+namespace pocketmine\network\mcpe\protocol\types;
 
 use pmmp\encoding\ByteBufferReader;
 use pmmp\encoding\ByteBufferWriter;
-use pmmp\encoding\LE;
+use pmmp\encoding\VarInt;
+use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\serializer\CommonTypes;
 
-final class CameraAimAssistCategoryEntityPriority{
-
+final class WorldPosition{
 	public function __construct(
-		private string $identifier,
-		private int $priority
+		private Vector3 $position,
+		private int $dimension,
 	){}
 
-	public function getIdentifier() : string{ return $this->identifier; }
+	public function getPosition() : Vector3{ return $this->position; }
 
-	public function getPriority() : int{ return $this->priority; }
+	public function getDimension() : int{ return $this->dimension; }
 
 	public static function read(ByteBufferReader $in) : self{
-		$identifier = CommonTypes::getString($in);
-		$priority = LE::readSignedInt($in);
-		return new self(
-			$identifier,
-			$priority
-		);
+		$position = CommonTypes::getVector3($in);
+		$dimension = VarInt::readSignedInt($in);
+		return new self($position, $dimension);
 	}
 
 	public function write(ByteBufferWriter $out) : void{
-		CommonTypes::putString($out, $this->identifier);
-		LE::writeSignedInt($out, $this->priority);
+		CommonTypes::putVector3($out, $this->position);
+		VarInt::writeSignedInt($out, $this->dimension);
 	}
 }

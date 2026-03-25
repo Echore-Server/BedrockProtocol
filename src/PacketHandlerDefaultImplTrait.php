@@ -865,4 +865,56 @@ trait PacketHandlerDefaultImplTrait{
 	public function handleServerboundDataStore(ServerboundDataStorePacket $packet) : bool{
 		return false;
 	}
+
+	public function handleClientboundDataDrivenUIShowScreen(ClientboundDataDrivenUIShowScreenPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleClientboundDataDrivenUICloseScreen(ClientboundDataDrivenUICloseScreenPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleClientboundDataDrivenUIReload(ClientboundDataDrivenUIReloadPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleClientboundTextureShift(ClientboundTextureShiftPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleVoxelShapes(VoxelShapesPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleCameraSpline(CameraSplinePacket $packet) : bool{
+		return false;
+	}
+
+	public function handleCameraAimAssistActorPriority(CameraAimAssistActorPriorityPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleResourcePacksReadyForValidation(ResourcePacksReadyForValidationPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleLocatorBar(LocatorBarPacket $packet) : bool{
+		return false;
+	}
+
+	public function handlePartyChanged(PartyChangedPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleServerboundDataDrivenScreenClosed(ServerboundDataDrivenScreenClosedPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleSyncWorldClocks(SyncWorldClocksPacket $packet) : bool{
+		return false;
+	}
+
+	public function handleClientboundAttributeLayerSync(ClientboundAttributeLayerSyncPacket $packet) : bool{
+		return false;
+	}
 }

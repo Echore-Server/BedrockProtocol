@@ -19,7 +19,9 @@ use pmmp\encoding\ByteBufferWriter;
 use pmmp\encoding\VarInt;
 use pocketmine\network\mcpe\protocol\serializer\CommonTypes;
 
-/** This is used for PlayerAuthInput packet when the flags include PERFORM_BLOCK_ACTIONS */
+/**
+ * This is used for PlayerAuthInput packet when the flags include PERFORM_BLOCK_ACTIONS
+ */
 final class PlayerBlockActionWithBlockInfo implements PlayerBlockAction{
 	public function __construct(
 		private int $actionType,
@@ -38,13 +40,13 @@ final class PlayerBlockActionWithBlockInfo implements PlayerBlockAction{
 	public function getFace() : int{ return $this->face; }
 
 	public static function read(ByteBufferReader $in, int $actionType) : self{
-		$blockPosition = CommonTypes::getSignedBlockPosition($in);
+		$blockPosition = CommonTypes::getBlockPosition($in);
 		$face = VarInt::readSignedInt($in);
 		return new self($actionType, $blockPosition, $face);
 	}
 
 	public function write(ByteBufferWriter $out) : void{
-		CommonTypes::putSignedBlockPosition($out, $this->blockPosition);
+		CommonTypes::putBlockPosition($out, $this->blockPosition);
 		VarInt::writeSignedInt($out, $this->face);
 	}
 
