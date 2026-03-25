@@ -2,7 +2,7 @@
     "name": "echore/bedrock-protocol",
     "description": "An implementation of the Minecraft: Bedrock Edition protocol in PHP",
     "type": "library",
-    "version": "54.0.0+bedrock-1.21.130",
+    "version": "56.0.0+bedrock-1.26.10",
     "require": {
         "php": "^8.1",
         "ext-encoding": "~1.0.0",
